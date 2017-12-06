@@ -41,7 +41,7 @@ fakenews["output"] = "fake"
 
 data = realnews.append(fakenews, ignore_index=True)
 data = dataPreProcessing(data)
-#data = data.sample(frac=1).reset_index(drop=True)
+data = data.sample(frac=1).reset_index(drop=True)
 tfidfVectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5,stop_words='english')
 clf = RandomForestClassifier(n_estimators=100)
 
