@@ -1,0 +1,31 @@
+---
+title: "Real_Fake_Plot"
+author: "Shilpa"
+date: "December 4, 2017"
+output: html_document
+---
+
+```{r}
+library("ggplot2")
+
+
+df = read.csv("/Users/shilpagundrathi/Desktop/real_fake_plot.csv")
+df1 = read.csv("/Users/shilpagundrathi/Downloads/RandomForest.csv")
+
+auc <-0.930960482013
+
+auc1 <-0.870528770637
+gp <- ggplot(df1, aes(x=fpr, ymin=0, ymax=tpr,colour=tpr)) +
+    geom_ribbon(data=df,alpha=0.5,color="red") +
+  geom_abline(linetype='dashed')+
+    geom_line(data=df,aes(y=tpr),color = "blue") +
+    geom_line(data=df1,aes(y=tpr),color = "red")+
+    geom_ribbon(data=df1,alpha=0.2,color="green") +
+    ggtitle("LR & RFC with AUC 0.93,0.87 ")+
+  labs( x = "FPR(FP/(FP+TN))", y = "TPR(TP/(TP+FN))")
+
+gp
+
+  
+```
+
